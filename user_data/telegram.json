@@ -1,0 +1,24 @@
+{
+    "telegram": {
+        "enabled": true,
+        "token": "5685305882:AAGpq7i20GbkKo4qPVixugs7BUuC87GhEWw",
+        "chat_id": "1087333523",
+        "keyboard": [
+            ["/status table","/profit","/balance","/daily"],
+            ["/performance","/trades","/logs"],
+            ["/logs","/help","/start","/stop"]
+        ],
+        "notification_settings": {
+            "status": "silent",
+            "warning": "on",
+            "startup": "silent",
+            "buy": "silent",
+            "sell": "silent",
+            "buy_cancel": "silent",
+            "sell_cancel": "silent",
+            "buy_fill": "off",
+            "sell_fill": "off"
+        },
+        "balance_dust_level": 0.01
+    }
+}

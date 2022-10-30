@@ -1,0 +1,37 @@
+---
+version: '3'
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:stable
+    #if not NFI can comment out
+    build:
+       context: /
+       dockerfile: "./docker/Dockerfile.custom"
+    restart: unless-stopped
+    #docker name
+    container_name: KuCoin
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    # Default command used when running `docker compose up`
+    command: 
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
+    #general config
+      --config /freqtrade/user_data/config.json
+    #exchange/coin config
+      --config /freqtrade/user_data/config-Kucoin.json
+    #exchange API
+      --config /freqtrade/user_data/exchange-Kucoin.json
+    #whitelist
+      --config /freqtrade/user_data/whitelist-Kucoin.json
+    #blacklist
+      --config /freqtrade/user_data/blacklist-all.json
+    #pairlist
+      --config /freqtrade/user_data/pairlist-volume-kucoin-usdt.json
+    #telegram
+      --config /freqtrade/user_data/telegram-Kucoin.json
+    #strategy
+      --strategy NostalgiaForInfinityNext
